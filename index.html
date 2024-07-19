@@ -16,9 +16,18 @@
     </script>
 
     <script>
-        setTimeout(function() {
-            window.location.href = "https://lin.ee/CLGm7rq";
-        }, 3000); // Redirect after 3000 milliseconds
+        function sendAnalyticsAndRedirect() {
+            gtag('event', 'page_view', {
+                'event_callback': function() {
+                    window.location.href = "https://lin.ee/CLGm7rq";
+                }
+            });
+            setTimeout(function() {
+                window.location.href = "https://lin.ee/CLGm7rq";
+            }, 2000); // Ensure redirection after 2 seconds if callback fails
+        }
+
+        setTimeout(sendAnalyticsAndRedirect, 3000); // Trigger after 3000 milliseconds
     </script>
 </head>
 <body>
